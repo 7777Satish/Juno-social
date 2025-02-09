@@ -1,0 +1,417 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+    background: rgb(121, 121, 121);
+}
+
+::-webkit-scrollbar-thumb{
+    width: 10px;
+    height: 10px;
+    background: #313131;
+}
+
+body {
+    position: relative;
+    font-family: Arial, sans-serif;
+    background-color: #151515;
+    color: #d5d5d5;
+    display: grid;
+    grid-template-columns: 400px 1fr 400px;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    padding-right: 10px;
+}
+
+a{
+    color: rgb(82, 138, 206);
+    text-decoration: none;
+}
+
+nav{
+    color: #c1c1c1;
+    width: 400px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    padding: 30px 90px 30px 120px;
+    grid-template-rows: 60px 1fr;
+    border-right: 1px solid rgba(100,100,100,0.5);
+}
+
+nav a{
+    color: inherit;
+}
+
+nav h1{
+    margin: auto 0;
+    font-family: 'Righteous', sans-serif;
+    color: #e1e1e1;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav ul li{
+    padding: 10px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav ul li:hover{
+    color: #fff;
+}
+
+nav .profile{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+nav .profile .image{
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+nav .profile div{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+nav .profile div span{
+    word-wrap: nowrap;
+    word-break: keep-all;
+    width: 120px;
+}
+
+nav .profile div .username{
+    font-size: small;
+    color: #929292;
+}
+
+main {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(100,100,100,0.5);
+}
+
+main .user{
+    width: 100%;
+    padding: 15px 0;
+    margin: auto;
+    border-bottom: 1px solid rgba(100,100,100,0.5);
+}
+
+main .user span{
+    font-weight: 600;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+main .user span .image{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+main .user span .image img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+main .user form{
+    height: fit-content;
+    align-items: center;
+
+    margin: auto;
+    display: flex;
+}
+
+main .user form .input{
+    display: flex;
+    margin-right: 15px;
+}
+
+main .user form .input span{
+    font-size: 20px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+main .user form .input span:hover{
+    color: #fff;
+}
+
+main .user form textarea{
+    background: transparent;
+    color: #e1e1e1;
+    border: none;
+    border-bottom: 1px solid rgba(100,100,100,0.5);
+    outline: none;
+    padding: 5px 10px;
+    margin: 20px;
+    margin-right: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-size: large;
+}
+
+main .user button{
+    background: rgba(219, 219, 219);
+    color: #1e1e1e;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    font-size: medium;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+main .user button:hover{
+    background: rgb(248, 248, 248);
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section h2{
+    margin-bottom: 25px;
+}
+
+main .posts{
+    padding: 20px 0;
+}
+
+main .posts article{
+    border-bottom: 1px solid rgba(100,100,100,0.5);
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+}
+
+article .top{
+    width: 100%;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+}
+
+article .top .left{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+article .top .left img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+article .top .right{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+article .top h3{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+article .top h3 span{
+    font-size: medium;
+    color: #c1c1c1;
+    font-weight: 400;
+}
+
+article .content{
+    padding-left: 50px;
+}
+
+article .content img{
+    margin: 20px 0;
+    border-radius: 40px;
+    width: 100%;
+}
+
+article .actions{
+    display: flex;
+    margin-top: 10px;
+    padding: 0 0px 0 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+article .actions .left{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+
+article .actions .right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+article .actions .left button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+article .actions button{
+    background: transparent;
+    color: #c1c1c1;
+    justify-self: start;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', serif;
+    cursor: pointer;
+}
+
+main .moreposts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 400px;
+    bottom: 0;
+    grid-column-start: 3;
+    height: 100vh;
+}
+
+footer .main{
+    padding: 0 5px;
+    height: 120vh;
+    top: 0;
+}
+
+footer .main .search form{
+    color: #c1c1c1;
+    display: grid;
+    grid-template-columns: 15px 1fr;
+    gap: 7px;
+    justify-content: center;
+    padding: 7px 15px;
+    border: 1px solid rgba(100,100,100,0.5);
+    border-radius: 20px;
+    transition: 0.5s ease;
+}
+
+footer .main .search form:focus-within{
+    border: 1px solid rgba(100,100,100,1);
+}
+
+footer .main .search form input{
+    background: transparent;
+    color: #e1e1e1;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+footer .main .profiles ul{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+footer .main .profiles ul li{
+    display: flex;
+    width: 280px;
+    align-items: center;
+    justify-content: space-between;
+}
+footer .main .profiles ul li .container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+footer .main .profiles ul li img{
+    border-radius: 50%;
+}
+
+footer .main .profiles ul li .name{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+footer .main .profiles ul li button{
+    background: rgba(219, 219, 219);
+    color: #1e1e1e;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    font-size: medium;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+footer .main .profiles ul li button:hover{
+    background: rgb(248, 248, 248);
+}
+
+footer .main section{
+    padding: 20px 20px;
+}
+
+footer .main section li{
+    list-style: none;
+}
