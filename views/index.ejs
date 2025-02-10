@@ -13,8 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap" rel="stylesheet">
 
     <!-- Google Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+    <!-- Local JS -->
+     <script src="functions.js"></script>
 </head>
 
 <body>
@@ -40,10 +42,12 @@
             <span class="more material-symbols-outlined">more_horiz</span>
         </span>
     </nav>
+    
+
     <main>
 
         <section class="user">
-            <form action="/newpost" method="POST">
+            <form onsubmit="handleForm(event)" method="POST" action="/newpost">
                 <span>
                     <div class="image">
                         <img alt="image" src="https://picsum.photos/30?random=<%= Math.floor(Math.random()*1000)%>"/>
@@ -51,8 +55,20 @@
                     <%= user.fullname%>,
                 </span>
                 <div class="input">
-                    <textarea required rows="1" cols="30" id="content" name="content" placeholder="What is happening?"></textarea>
-                    <span class="material-symbols-outlined">image</span>
+                    <textarea required maxlength="500" rows="1" cols="30" id="content" name="content" placeholder="What is happening?"></textarea>
+                    <div class="imagemenu" id="imagemenu" onclick="imageMenuPopupClose(1)">
+                        <div class="maincontent" onclick="event.stopPropagation()">
+                            <div class="top">
+                                <h3>Enter the URL of the image:</h3>
+                                <input type="url" id="imagefield" maxlength="500" name="image" type="text" placeholder="image url"/>
+                            </div>
+                            <div class="bottom">
+                                <span onclick="imageMenuPopupClose(1)">Done</span>
+                                <span onclick="imageMenuPopupClose(0)">Cancel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span onclick="imageMenuPopupOpen()" class="material-symbols-outlined">image</span>
                 </div>
                 <button>POST</button>
             </form>
@@ -72,17 +88,21 @@
                     </div>
                     <div class="content">
                         <p><%= element.content %></p>
-                        <img alt="image" src="https://picsum.photos/500/350?random=<%= Math.floor(Math.random()*10)%>"/>
+                        <% if(element.image && element.image!='NULL'){ %>
+                            <img alt="image" src=<%= element.image %> />
+                        <% } else { %>
+                            <img alt="image" src="https://picsum.photos/500/350?random=<%= Math.floor(Math.random()*10) %>"/>
+                        <% } %>
                     </div>
                     <div class="actions">
                         <div class="left">
-                            <button>
+                            <button class="<%= element.liked ? 'liked' : '' %>" onclick="likepost(event)">
                                 <span class="material-symbols-outlined">favorite</span>
-                                <%= element.likes %>
+                                <span><%= element.likes %></span>
                             </button>
                             <button>
                                 <span class="material-symbols-outlined">comment</span>
-                                <%= element.likes %>
+                                <span><%= element.comments %></span>
                             </button>
                         </div>
                         <div class="right">

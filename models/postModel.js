@@ -1,27 +1,56 @@
 import db from '../config/dbConfig.js';
 
 const Post = {
-    create: (username, content)=>{
+    create: (username, content, image)=>{
         const postId = new Date().getTime() + Math.floor(Math.random()*10000);
-        const query = `insert into posts (postid, content, username) values (?, ?, ?)`;
+        const query = `insert into posts (postid, content, username, image) values (?, ?, ?, ?)`;
         try{
-            return db.query(query, [postId, content, username]);
+            return db.query(query, [postId, content, username, image.length>0?image:'NULL']);
         }
         catch(err){console.log(err)}
     },
-    getPosts: (i)=>{
-        const query = `SELECT posts.*, users.fullname 
-FROM posts 
-JOIN users ON posts.username = users.username
-ORDER BY date DESC
-LIMIT ? OFFSET ?;`
+    getPosts: (username, i)=>{
+        const query = `SELECT posts.*, 
+                        users.fullname,
+                        EXISTS (
+                            SELECT 1 
+                            FROM likes 
+                            WHERE likes.postid = posts.postid 
+                                AND likes.username = ?
+                        ) AS liked
+                    FROM posts
+                    JOIN users ON posts.username = users.username
+                    ORDER BY date DESC
+                    LIMIT ? OFFSET ?;`
         try{
-            return db.query(query, [6, i*6]);
+            return db.query(query, [username, 6, i*6]);
         } catch(err){
             console.log(err);
         }
     },
-    incrementLikes: (postId)=>{}
+    deletePost: (username, postid)=>{
+        try{
+            db.query('delete from posts where username=? and postid=?', [username, postid]);
+        } catch(err){
+            console.log(err);
+        }
+    },
+    likePost: async (username, postId) => {
+        try{
+            let [likes] = await db.query('select * from likes where username=? AND postid=?', [username, postId]);
+            if(likes.length==0){
+                await db.query('insert into likes (username, postid) values (?, ?)', [username, postId]);
+                await db.query('update posts set likes=likes+1 where postid=?', [postId]);
+            } else {
+                await db.query('delete from likes where username=? AND postid=?', [username, postId]);
+                await db.query('update posts set likes=likes-1 where postid=?', [postId]);
+            }
+            [likes] = await db.query('select likes from posts where  postid=?', [postId]);
+            return likes;
+        } catch(err){
+            console.log(err);
+        }
+    }
 }
 
 export default Post;

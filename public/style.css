@@ -1,16 +1,16 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 10px;
     height: 10px;
     background: rgb(121, 121, 121);
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     width: 10px;
     height: 10px;
     background: #313131;
@@ -29,12 +29,12 @@ body {
     padding-right: 10px;
 }
 
-a{
+a {
     color: rgb(82, 138, 206);
     text-decoration: none;
 }
 
-nav{
+nav {
     color: #c1c1c1;
     width: 400px;
     height: 100%;
@@ -44,20 +44,20 @@ nav{
     display: grid;
     padding: 30px 90px 30px 120px;
     grid-template-rows: 60px 1fr;
-    border-right: 1px solid rgba(100,100,100,0.5);
+    border-right: 1px solid rgba(100, 100, 100, 0.5);
 }
 
-nav a{
+nav a {
     color: inherit;
 }
 
-nav h1{
+nav h1 {
     margin: auto 0;
     font-family: 'Righteous', sans-serif;
     color: #e1e1e1;
 }
 
-nav ul{
+nav ul {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -65,7 +65,7 @@ nav ul{
     font-family: 'Poppins', sans-serif;
 }
 
-nav ul li{
+nav ul li {
     padding: 10px 0;
     cursor: pointer;
     display: flex;
@@ -73,17 +73,17 @@ nav ul li{
     gap: 10px;
 }
 
-nav ul li:hover{
+nav ul li:hover {
     color: #fff;
 }
 
-nav .profile{
+nav .profile {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-nav .profile .image{
+nav .profile .image {
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -91,19 +91,19 @@ nav .profile .image{
     overflow: hidden;
 }
 
-nav .profile div{
+nav .profile div {
     display: flex;
     flex-direction: column;
     font-size: 16px;
 }
 
-nav .profile div span{
+nav .profile div span {
     word-wrap: nowrap;
     word-break: keep-all;
     width: 120px;
 }
 
-nav .profile div .username{
+nav .profile div .username {
     font-size: small;
     color: #929292;
 }
@@ -115,24 +115,24 @@ main {
     max-width: 800px;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid rgba(100,100,100,0.5);
+    border-right: 1px solid rgba(100, 100, 100, 0.5);
 }
 
-main .user{
+main .user {
     width: 100%;
     padding: 15px 0;
     margin: auto;
-    border-bottom: 1px solid rgba(100,100,100,0.5);
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
 }
 
-main .user span{
+main .user span {
     font-weight: 600;
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-main .user span .image{
+main .user span .image {
     height: 40px;
     width: 40px;
     display: flex;
@@ -141,12 +141,12 @@ main .user span .image{
     overflow: hidden;
 }
 
-main .user span .image img{
+main .user span .image img {
     width: 100%;
     border-radius: 50%;
 }
 
-main .user form{
+main .user form {
     height: fit-content;
     align-items: center;
 
@@ -154,35 +154,90 @@ main .user form{
     display: flex;
 }
 
-main .user form .input{
+main .user form .imagemenu{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(84, 91, 100, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+main .user form .imagemenu .maincontent{
+    width: 450px;
+    height: 250px;
+    background: #1e1e1e;
+    color: #e1e1e1;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+}
+
+main .user form .imagemenu .maincontent .top{
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+main .user form .imagemenu .maincontent .top input{
+    width: 400px;
+    background: transparent;
+    color: #e1e1e1;
+    border: none;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+    outline: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: large;
+}
+
+main .user form .imagemenu .maincontent .bottom{
+    display: flex;
+    gap: 25px;
+}
+
+main .user form .imagemenu .maincontent .bottom span:hover{
+    color: rgb(156, 223, 223);
+}
+
+main .user form .input {
     display: flex;
     margin-right: 15px;
 }
 
-main .user form .input span{
+main .user form .input span {
     font-size: 20px;
     font-weight: 200;
     cursor: pointer;
 }
 
-main .user form .input span:hover{
+main .user form .input span:hover {
     color: #fff;
 }
 
-main .user form textarea{
+main .user form textarea {
     background: transparent;
     color: #e1e1e1;
     border: none;
-    border-bottom: 1px solid rgba(100,100,100,0.5);
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
     outline: none;
     padding: 5px 10px;
     margin: 20px;
     margin-right: 5px;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: large;
 }
 
-main .user button{
+main .user button {
     background: rgba(219, 219, 219);
     color: #1e1e1e;
     border-radius: 30px;
@@ -195,33 +250,33 @@ main .user button{
     cursor: pointer;
 }
 
-main .user button:hover{
+main .user button:hover {
     background: rgb(248, 248, 248);
 }
 
-section{
+section {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-section h2{
+section h2 {
     margin-bottom: 25px;
 }
 
-main .posts{
+main .posts {
     padding: 20px 0;
 }
 
-main .posts article{
-    border-bottom: 1px solid rgba(100,100,100,0.5);
+main .posts article {
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
     /* gap: 10px; */
 }
 
-article .top{
+article .top {
     width: 100%;
     display: grid;
     align-content: center;
@@ -230,7 +285,7 @@ article .top{
     gap: 10px;
 }
 
-article .top .left{
+article .top .left {
     height: 40px;
     width: 40px;
     display: flex;
@@ -239,41 +294,41 @@ article .top .left{
     overflow: hidden;
 }
 
-article .top .left img{
+article .top .left img {
     width: 100%;
     border-radius: 50%;
 }
 
-article .top .right{
+article .top .right {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-article .top h3{
+article .top h3 {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-article .top h3 span{
+article .top h3 span {
     font-size: medium;
     color: #c1c1c1;
     font-weight: 400;
 }
 
-article .content{
+article .content {
     padding-left: 50px;
 }
 
-article .content img{
+article .content img {
     margin: 20px 0;
     border-radius: 40px;
     width: 100%;
 }
 
-article .actions{
+article .actions {
     display: flex;
     margin-top: 10px;
     padding: 0 0px 0 50px;
@@ -281,26 +336,36 @@ article .actions{
     justify-content: space-between;
 }
 
-article .actions .left{
+article .actions .left {
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
 
-article .actions .right{
+article .actions .right {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-article .actions .left button{
+article .actions .left button {
     display: flex;
     align-items: center;
     gap: 5px;
+    min-width: 60px;
 }
 
-article .actions button{
+article .actions .left .liked:first-child{
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color: rgb(221, 65, 143) !important;
+}
+
+article .actions button {
     background: transparent;
     color: #c1c1c1;
     justify-self: start;
@@ -310,7 +375,7 @@ article .actions button{
     cursor: pointer;
 }
 
-main .moreposts{
+main .moreposts {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -329,29 +394,29 @@ footer {
     height: 100vh;
 }
 
-footer .main{
+footer .main {
     padding: 0 5px;
     height: 120vh;
     top: 0;
 }
 
-footer .main .search form{
+footer .main .search form {
     color: #c1c1c1;
     display: grid;
     grid-template-columns: 15px 1fr;
     gap: 7px;
     justify-content: center;
     padding: 7px 15px;
-    border: 1px solid rgba(100,100,100,0.5);
+    border: 1px solid rgba(100, 100, 100, 0.5);
     border-radius: 20px;
     transition: 0.5s ease;
 }
 
-footer .main .search form:focus-within{
-    border: 1px solid rgba(100,100,100,1);
+footer .main .search form:focus-within {
+    border: 1px solid rgba(100, 100, 100, 1);
 }
 
-footer .main .search form input{
+footer .main .search form input {
     background: transparent;
     color: #e1e1e1;
     border: none;
@@ -361,7 +426,7 @@ footer .main .search form input{
     font-size: 16px;
 }
 
-footer .main .profiles ul{
+footer .main .profiles ul {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -369,28 +434,30 @@ footer .main .profiles ul{
     align-items: center;
 }
 
-footer .main .profiles ul li{
+footer .main .profiles ul li {
     display: flex;
     width: 280px;
     align-items: center;
     justify-content: space-between;
 }
-footer .main .profiles ul li .container{
+
+footer .main .profiles ul li .container {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-footer .main .profiles ul li img{
+
+footer .main .profiles ul li img {
     border-radius: 50%;
 }
 
-footer .main .profiles ul li .name{
+footer .main .profiles ul li .name {
     height: fit-content;
     display: flex;
     flex-direction: column;
 }
 
-footer .main .profiles ul li button{
+footer .main .profiles ul li button {
     background: rgba(219, 219, 219);
     color: #1e1e1e;
     border-radius: 30px;
@@ -404,14 +471,14 @@ footer .main .profiles ul li button{
     margin-left: 40px;
 }
 
-footer .main .profiles ul li button:hover{
+footer .main .profiles ul li button:hover {
     background: rgb(248, 248, 248);
 }
 
-footer .main section{
+footer .main section {
     padding: 20px 20px;
 }
 
-footer .main section li{
+footer .main section li {
     list-style: none;
 }

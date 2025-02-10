@@ -8,26 +8,40 @@ window.addEventListener('scroll', async (event)=>{
         posts = await posts.json();
         posts.forEach(element => {
             const html = `<article data-postid=${element.postid}>
-                        <div class="top">
-                            <div class="left">
-                                <img alt="image" src="https://picsum.photos/30?random=${Math.floor(Math.random()*100)}"/>
-                            </div>
-                            <div class="right">
-                                <h3><a href="#">${element.fullname}</a> <span>@${element.username}</span></h3>
-                                <span>${new Date(element.date).toDateString()}</span>
-                            </div>
+                    <div class="top">
+                        <div class="left">
+                            <img alt="image" src="https://picsum.photos/30?random=${Math.floor(Math.random()*100)}"/>
                         </div>
-                        <div class="content">
-                            <p>${element.content}</p>
-                            <img alt="image" src="https://picsum.photos/500/350?random=${Math.floor(Math.random()*10)}"/>
+                        <div class="right">
+                            <h3><a href="#">${element.fullname}</a> <span>@${element.username}</span></h3>
+                            <span>${new Date(element.date).toDateString()}</span>
                         </div>
-                        <div class="actions">
-                            <button>${element.likes} Likes</button>
-                            <button>${element.likes} Comments</button>
-                            <button>Follow</button>
-                            <button>Tag</button>
+                    </div>
+                    <div class="content">
+                        <p>${element.content.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace('\n',"<br/>")}</p>
+                        ${(element.image && element.image!='NULL')?
+                            `<img alt="image" src=${element.image} />`
+                        :
+                            `<img alt="image" src="https://picsum.photos/500/350?random=${Math.floor(Math.random()*10)}"/>`
+                        }
+                    </div>
+                    <div class="actions">
+                        <div class="left">
+                            <button class="${element.liked ? 'liked' : ''}" onclick="likepost(event)" >
+                                <span class="material-symbols-outlined">favorite</span>
+                                <span>${element.likes}</span>
+                            </button>
+                            <button>
+                                <span class="material-symbols-outlined">comment</span>
+                                <span>${element.comments}</span>
+                            </button>
                         </div>
-                    </article><br/>`;
+                        <div class="right">
+                            <button><span class="material-symbols-outlined">bookmark</span></button>
+                            <button><span class="material-symbols-outlined">reply</span></button>
+                        </div>
+                    </div>
+                </article><br/>`;
             allPosts.innerHTML += html;
         });
         if(posts.length<6){
@@ -38,3 +52,16 @@ window.addEventListener('scroll', async (event)=>{
         page++;
     }
 });
+
+const imagemenu = document.getElementById('imagemenu');
+const imagefield = document.getElementById('imagefield');
+function imageMenuPopupOpen(){
+    imagemenu.style.display = 'flex';
+}
+
+function imageMenuPopupClose(n){
+    if(!n){
+        imagefield.value = '';
+    }
+    imagemenu.style.display = 'none';
+}
