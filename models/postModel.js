@@ -50,6 +50,15 @@ const Post = {
         } catch(err){
             console.log(err);
         }
+    },
+    commentOnPost: async (username, postId, content)=>{
+        try{
+            let [fullname] = await db.query('select fullname from users where username=?',[username]);
+            await db.query('insert into comments (fullname, username, postid, content) values (?, ?, ?, ?)', [fullname[0].fullname, username, postId, content]);
+            await db.query('update posts set comments=comments+1 where postid=?', [postId]);
+        } catch(err){
+            console.log(err);
+        }
     }
 }
 

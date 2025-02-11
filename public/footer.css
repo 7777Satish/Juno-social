@@ -1,0 +1,99 @@
+footer {
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 400px;
+    bottom: 0;
+    grid-column-start: 3;
+    height: 100vh;
+}
+
+footer .main {
+    padding: 0 5px;
+    height: 120vh;
+    top: 0;
+}
+
+footer .main .search form {
+    color: #c1c1c1;
+    display: grid;
+    grid-template-columns: 15px 1fr;
+    gap: 7px;
+    justify-content: center;
+    padding: 7px 15px;
+    border: 1px solid rgba(100, 100, 100, 0.5);
+    border-radius: 20px;
+    transition: 0.5s ease;
+}
+
+footer .main .search form:focus-within {
+    border: 1px solid rgba(100, 100, 100, 1);
+}
+
+footer .main .search form input {
+    background: transparent;
+    color: #e1e1e1;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+footer .main .profiles ul {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+footer .main .profiles ul li {
+    display: flex;
+    width: 280px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer .main .profiles ul li .container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .main .profiles ul li img {
+    border-radius: 50%;
+}
+
+footer .main .profiles ul li .name {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+footer .main .profiles ul li button {
+    background: rgba(219, 219, 219);
+    color: #1e1e1e;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    font-size: medium;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+footer .main .profiles ul li button:hover {
+    background: rgb(248, 248, 248);
+}
+
+footer .main section {
+    padding: 20px 20px;
+}
+
+footer .main section li {
+    list-style: none;
+}

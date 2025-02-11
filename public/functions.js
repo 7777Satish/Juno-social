@@ -12,3 +12,16 @@ function likepost(e){
         button.children[1].innerText = data.likes;
     });
 }
+
+function handleCommentForm(e){
+    e.preventDefault();
+    const postid = currentCommentElement; 
+    fetch('/api/comment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({postid, content:e.srcElement[0].value})
+    });
+    e.srcElement[0].value = '';
+}

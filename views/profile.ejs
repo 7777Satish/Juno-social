@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Juno</title>
+</head>
+<body>
+    <%- include('./components/nav') %>
+    <div class="profile-dashboard"></div>
+        <h1>Welcome, <%= user.name %>!</h1>
+        <div class="profile-info">
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Joined:</strong> <%= user.joinedDate %></p>
+        </div>
+        <div class="profile-actions">
+            <a href="/edit-profile" class="btn">Edit Profile</a>
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+    </div>
+
+    <%- include('./components/footer') %>
+</body>
+</html>

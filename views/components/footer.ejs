@@ -1,0 +1,49 @@
+
+<footer>
+    <div class="main">
+
+        <section class="search">
+            <form action="/search" method="GET">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" name="query" placeholder="Search"/>
+            </form>
+        </section>
+
+        <section class="profiles">
+            <h2>Top Profiles</h2>
+            <ul>
+                <% topProfiles.forEach(element => { %>
+                <li>
+                    <div class="container">
+                        <div class="image">
+                            <img alt="image" src="https://picsum.photos/30?random=<%= Math.floor(Math.random()*100)%>"/>
+                        </div>
+                        <div class="name">
+                            <strong><%= element.fullname %></strong> 
+                            <span>@<%= element.username %></span>
+                        </div>
+                    </div>
+                    <button>Follow</button>
+                </li>
+                <% }); %>
+                
+            </ul>
+        </section>
+
+        <section>
+            <h2>Trending Topics</h2>
+            <ul>
+                <li><a href="#">#Technology</a></li>
+                <li><a href="#">#Health</a></li>
+                <li><a href="#">#Travel</a></li>
+                <li><a href="#">#Education</a></li>
+                <li><a href="#">#Entertainment</a></li>
+            </ul>
+        </section>
+
+        <section>
+            copyright &copy; Satish Singh @ 2025<br/>All Rights Reserved
+        </section>
+    </div>
+
+</footer>

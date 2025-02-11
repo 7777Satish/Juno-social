@@ -30,4 +30,11 @@ api.post('/likepost', authMiddleware, async (req, res)=>{
     res.json(likes);
 });
 
+api.post('/comment', authMiddleware, async (req, res)=>{
+    const {postid, content} = req.body;
+    const username = req.user.username;
+    await postModel.commentOnPost(username, parseInt(postid), content);
+    res.redirect('/');
+});
+
 export default api;

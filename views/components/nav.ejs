@@ -1,0 +1,22 @@
+
+<nav>
+    <h1>Juno</h1>
+    <ul>
+        <li><span class="material-symbols-outlined">home</span><strong>Home</strong></li>
+        <li><span class="material-symbols-outlined">search</span>Search</li>
+        <li><span class="material-symbols-outlined">notifications</span>Notifications</li>
+        <li><span class="material-symbols-outlined">message</span>Messages</li>
+        <li><span class="material-symbols-outlined">account_circle</span>Profile</li>
+        <li><span class="material-symbols-outlined">logout</span><a href="/logout">Sign Out</a></li>
+    </ul>
+    <span class="profile">
+        <div class="image">
+            <img alt="image" src="https://picsum.photos/35?random=<%= Math.floor(Math.random()*1000)%>"/>
+        </div>
+        <div>
+            <span><%= user.fullname %></span>
+            <span class="username">@<%= user.username %></span>
+        </div>
+        <span class="more material-symbols-outlined">more_horiz</span>
+    </span>
+</nav>

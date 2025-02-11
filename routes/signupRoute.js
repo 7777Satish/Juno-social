@@ -15,7 +15,6 @@ signupRoute.post('/', async (req, res) => {
     }
     var [users] = await userModel.getByEmail(email);
     if (users.length > 0) {
-        console.log('This email is already registered');
         res.send('This email is already registered');
         return;
     }
