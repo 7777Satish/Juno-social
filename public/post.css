@@ -1,0 +1,106 @@
+article {
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+}
+
+article .top {
+    width: 100%;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+}
+
+article .top .left {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+article .top .left img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+article .top .right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+article .top h3 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+article .top h3 span {
+    font-size: medium;
+    color: #c1c1c1;
+    font-weight: 400;
+}
+
+article .content {
+    padding-left: 50px;
+}
+
+article .content img {
+    margin: 20px 0;
+    border-radius: 40px;
+    width: 100%;
+}
+
+article .actions {
+    display: flex;
+    margin-top: 10px;
+    padding: 0 0px 0 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+article .actions .left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+
+article .actions .right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+article .actions .left button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 60px;
+}
+
+article .actions .left .liked:first-child{
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color: rgb(221, 65, 143) !important;
+}
+
+article .actions button {
+    background: transparent;
+    color: #c1c1c1;
+    justify-self: start;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', serif;
+    cursor: pointer;
+}

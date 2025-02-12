@@ -1,13 +1,36 @@
 import db from '../config/dbConfig.js';
 
 const Post = {
-    create: (username, content, image)=>{
+    create: async (username, content, image)=>{
         const postId = new Date().getTime() + Math.floor(Math.random()*10000);
         const query = `insert into posts (postid, content, username, image) values (?, ?, ?, ?)`;
         try{
+            await db.query("update users set posts = posts+1 where username=?", [username]);
             return db.query(query, [postId, content, username, image.length>0?image:'NULL']);
         }
         catch(err){console.log(err)}
+    },
+    getPostsByUsername: (username, target_username, i)=>{
+        const query = `
+    SELECT posts.*, 
+           users.fullname,
+           EXISTS (
+               SELECT 1 
+               FROM likes 
+               WHERE likes.postid = posts.postid 
+               AND likes.username = ?
+           ) AS liked
+    FROM posts
+    JOIN users ON posts.username = users.username
+    WHERE posts.username = ?
+    ORDER BY date DESC
+    LIMIT 6 OFFSET 0;
+`;
+        try{
+            return db.query(query, [username, target_username, 6, i*6]);
+        } catch(err){
+            console.log(err);
+        }
     },
     getPosts: (username, i)=>{
         const query = `SELECT posts.*, 

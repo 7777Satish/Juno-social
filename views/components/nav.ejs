@@ -2,12 +2,12 @@
 <nav>
     <h1>Juno</h1>
     <ul>
-        <li><span class="material-symbols-outlined">home</span><strong>Home</strong></li>
-        <li><span class="material-symbols-outlined">search</span>Search</li>
-        <li><span class="material-symbols-outlined">notifications</span>Notifications</li>
-        <li><span class="material-symbols-outlined">message</span>Messages</li>
-        <li><span class="material-symbols-outlined">account_circle</span>Profile</li>
-        <li><span class="material-symbols-outlined">logout</span><a href="/logout">Sign Out</a></li>
+        <li><a href="/"><span class="material-symbols-outlined">home</span><strong>Home</strong></a></li>
+        <li><a href="/search"><span class="material-symbols-outlined">search</span>Search</a></li>
+        <li><a href="/notifications"><span class="material-symbols-outlined">notifications</span>Notifications</a></li>
+        <li><a href="/message"><span class="material-symbols-outlined">message</span>Messages</a></li>
+        <li><a href="/p/<%= user.username%>"><span class="material-symbols-outlined">account_circle</span>Profile</a></li>
+        <li><a href="/logout"><span class="material-symbols-outlined">logout</span>Sign Out</a></li>
     </ul>
     <span class="profile">
         <div class="image">

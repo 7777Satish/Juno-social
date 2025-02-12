@@ -1,24 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile | Juno</title>
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="/profile.css" />
+    <link rel="stylesheet" href="/nav.css" />
+    <link rel="stylesheet" href="/footer.css" />
+    <link rel="stylesheet" href="/post.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap"
+        rel="stylesheet">
+
+    <!-- Google Icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <!-- Local JavaScript -->
+    <script src="/profile.js"></script>
+    <script src="/functions.js"></script>
 </head>
+
 <body>
-    <%- include('./components/nav') %>
-    <div class="profile-dashboard"></div>
-        <h1>Welcome, <%= user.name %>!</h1>
-        <div class="profile-info">
-            <p><strong>Email:</strong> <%= user.email %></p>
-            <p><strong>Joined:</strong> <%= user.joinedDate %></p>
-        </div>
-        <div class="profile-actions">
-            <a href="/edit-profile" class="btn">Edit Profile</a>
-            <a href="/logout" class="btn">Logout</a>
+    
+    <div class="comment_form" id="commentmenu" onclick="closeCommentPopup(0)">
+        <div class="comment_form_main" onclick="event.stopPropagation()">
+            <form onsubmit="handleCommentForm(event)">
+                <h2>Enter the comment</h2>
+                <textarea id="commentfield" autofocus placeholder="Enter your reply" maxlength="500"></textarea>
+                <div class="buttons">
+                    <button onclick="closeCommentPopup(1)">Comment</button>
+                    <span onclick="closeCommentPopup(0)">Cancel</span>
+                </div>
+            </form>
         </div>
     </div>
 
-    <%- include('./components/footer') %>
+    <%- include('./components/nav') %>
+        <main>
+            <div class="banner">
+                <div class="profile">
+                    <a href="/"><span class="material-symbols-outlined">arrow_back</span></a>
+                    <div class="name">
+                        <h2><%= profile.fullname %></h2>
+                        <code>Posts: <%= profile.posts %></code>
+                    </div>
+                </div>
+            </div>
+            <div class="image">
+                <div class="banner_image">
+                    <img alt="image" src="https://picsum.photos/720/270?random=<%= Math.floor(Math.random()*1000)%>"/>
+                </div>
+                <div class="text">
+                    <div class="profile_pic">
+                        <img alt="<%= profile.username %>" src="https://picsum.photos/150?random=<%= Math.floor(Math.random()*1000)%>"/>
+                        <div class="info">
+                            <span><%= profile.fullname %></span>
+                            <span style="color: #aaa; font-size: small;">@<%= profile.username %></span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button><%= owner?"Edit":"Follow" %></button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="description">
+                <p><%= profile.description?user.description:"Motivated and adaptable with strong problem-solving skills. A team player committed to continuous learning and personal growth in dynamic environments." %></p>
+            </section>
+            <hr/>
+            <section class="posts">
+                <% posts.forEach(element => { %>
+                    <%- include('./components/post', {element:element}) %>
+                    <br/>
+                <% }) %>
+            </section>
+        </main>
+
+        <%- include('./components/footer') %>
 </body>
+
 </html>

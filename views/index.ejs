@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="post.css" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,41 +71,8 @@
         </section>
         <section class="posts" id="allPosts">
             <% posts.forEach(element => { %>
-                <article data-postid=<%= element.postid %>>
-                    <div class="top">
-                        <div class="left">
-                            <img alt="image" src="https://picsum.photos/30?random=<%= Math.floor(Math.random()*100)%>"/>
-                        </div>
-                        <div class="right">
-                            <h3><a href="#"><%= element.fullname %></a> <span>@<%= element.username %></span></h3>
-                            <span><%= new Date(element.date).toDateString() %></span>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <p><%= element.content %></p>
-                        <% if(element.image && element.image!='NULL'){ %>
-                            <img alt="image" src=<%= element.image %> />
-                        <% } else { %>
-                            <img alt="image" src="https://picsum.photos/500/350?random=<%= Math.floor(Math.random()*10) %>"/>
-                        <% } %>
-                    </div>
-                    <div class="actions">
-                        <div class="left">
-                            <button class="<%= element.liked ? 'liked' : '' %>" onclick="likepost(event)">
-                                <span class="material-symbols-outlined">favorite</span>
-                                <span><%= element.likes %></span>
-                            </button>
-                            <button onclick="openCommentPopup(event)">
-                                <span class="material-symbols-outlined">comment</span>
-                                <span><%= element.comments %></span>
-                            </button>
-                        </div>
-                        <div class="right">
-                            <button><span class="material-symbols-outlined">bookmark</span></button>
-                            <button><span class="material-symbols-outlined">reply</span></button>
-                        </div>
-                    </div>
-                </article><br/>
+                <%- include('./components/post', {element:element}) %>
+                <br/>
             <% }) %>
         </section>
 

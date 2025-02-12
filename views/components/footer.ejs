@@ -14,6 +14,7 @@
             <ul>
                 <% topProfiles.forEach(element => { %>
                 <li>
+                    <a href="/p/<%= element.username %>">
                     <div class="container">
                         <div class="image">
                             <img alt="image" src="https://picsum.photos/30?random=<%= Math.floor(Math.random()*100)%>"/>
@@ -23,6 +24,7 @@
                             <span>@<%= element.username %></span>
                         </div>
                     </div>
+                    </a>
                     <button>Follow</button>
                 </li>
                 <% }); %>

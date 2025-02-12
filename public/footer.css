@@ -1,5 +1,5 @@
 footer {
-    color: white;
+    color: rgb(205, 205, 205);
     text-align: center;
     padding: 10px 0;
     position: fixed;
@@ -56,6 +56,10 @@ footer .main .profiles ul li {
     justify-content: space-between;
 }
 
+footer .main .profiles ul li a{
+    color: inherit;
+}
+
 footer .main .profiles ul li .container {
     display: flex;
     align-items: center;
@@ -92,6 +96,9 @@ footer .main .profiles ul li button:hover {
 
 footer .main section {
     padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 footer .main section li {

@@ -26,10 +26,10 @@ import profileRoute from './routes/profileRoute.js';
 import api from './routes/api/posts.js';
 
 app.use('/', mainRoute);
+app.use('/p', profileRoute);
 app.use('/login', loginRoute);
 app.use('/logout', logoutRoute);
 app.use('/signup', signupRoute);
-app.use('/profile', profileRoute);
 app.use('/api', api);
 
 app.listen(process.env.PORT||8000, ()=>{console.log('Server listening at port', process.env.PORT)})
