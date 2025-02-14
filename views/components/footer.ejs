@@ -13,20 +13,21 @@
             <h2>Top Profiles</h2>
             <ul>
                 <% topProfiles.forEach(element => { %>
-                <li>
-                    <a href="/p/<%= element.username %>">
-                    <div class="container">
-                        <div class="image">
-                            <img alt="image" src="https://picsum.photos/30?random=<%= Math.floor(Math.random()*100)%>"/>
-                        </div>
-                        <div class="name">
-                            <strong><%= element.fullname %></strong> 
-                            <span>@<%= element.username %></span>
-                        </div>
-                    </div>
-                    </a>
-                    <button>Follow</button>
-                </li>
+                    <li class="user-item">
+                        <span style="display: none;" class="data_element" data-username="<%= element.username %>"></span>
+                        <a href="/p/<%= element.username %>">
+                            <div class="container">
+                                <div class="image">
+                                    <img alt="image" src="https://picsum.photos/30?random=<%= Math.floor(Math.random() * 100) %>" />
+                                </div>
+                                <div class="name">
+                                    <strong><%= element.fullname %></strong>
+                                    <span>@<%= element.username %></span>
+                                </div>
+                            </div>
+                        </a>
+                        <button onclick="followUser(event)"><%= element.isFollowed?"Unfollow":"Follow" %></button>
+                    </li>
                 <% }); %>
                 
             </ul>

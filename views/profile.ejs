@@ -44,6 +44,7 @@
     </div>
 
     <%- include('./components/nav') %>
+    
         <main>
             <div class="banner">
                 <div class="profile">
@@ -58,7 +59,8 @@
                 <div class="banner_image">
                     <img alt="image" src="https://picsum.photos/720/270?random=<%= Math.floor(Math.random()*1000)%>"/>
                 </div>
-                <div class="text">
+                <div class="text user-item">
+                    <span style="display: none;" class="data_element" data-username="<%= profile.username %>"></span>
                     <div class="profile_pic">
                         <img alt="<%= profile.username %>" src="https://picsum.photos/150?random=<%= Math.floor(Math.random()*1000)%>"/>
                         <div class="info">
@@ -67,7 +69,9 @@
                         </div>
                     </div>
                     <div class="buttons">
-                        <button><%= owner?"Edit":"Follow" %></button>
+                        <button onclick=<%= owner ? 'editUser(event)' : 'followUser(event)' %>>
+                            <%= owner ? "Edit" : (isFollowed ? "Unfollow" : "Follow") %>
+                        </button>                        
                     </div>
                 </div>
             </div>

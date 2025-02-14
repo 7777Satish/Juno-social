@@ -1,6 +1,7 @@
 import express from 'express';
 import authMiddleware from '../../middlewares/authMiddleware.js';
 import postModel from '../../models/postModel.js';
+import userModel from '../../models/userModel.js';
 const api = express.Router();
 
 api.get('/posts', authMiddleware, async (req, res) => {
@@ -35,6 +36,13 @@ api.post('/comment', authMiddleware, async (req, res)=>{
     const username = req.user.username;
     await postModel.commentOnPost(username, parseInt(postid), content);
     res.redirect('/');
+});
+
+api.post('/follow', authMiddleware, async (req, res)=>{
+    const {followed} = req.body;
+    const username = req.user.username;
+    const result = await userModel.followUser(username, followed);
+    res.send(result);
 });
 
 export default api;

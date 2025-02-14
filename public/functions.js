@@ -25,3 +25,20 @@ function handleCommentForm(e){
     });
     e.srcElement[0].value = '';
 }
+
+function followUser(e) {
+    const username = e.target.closest('.user-item').querySelector('.data_element').getAttribute('data-username');
+
+    fetch('/api/follow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ followed: username })
+    })
+    .then(res => res.text())
+    .then(data => {
+        e.target.innerText = data;
+    })
+    .catch(err => {
+        console.error('Follow failed:', err);
+    });
+}

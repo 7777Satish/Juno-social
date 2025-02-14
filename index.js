@@ -23,7 +23,7 @@ import loginRoute from './routes/loginRoute.js';
 import logoutRoute from './routes/logoutRoute.js';
 import signupRoute from './routes/signupRoute.js';
 import profileRoute from './routes/profileRoute.js';
-import api from './routes/api/posts.js';
+import api from './routes/api/api.js';
 
 app.use('/', mainRoute);
 app.use('/p', profileRoute);
@@ -31,5 +31,8 @@ app.use('/login', loginRoute);
 app.use('/logout', logoutRoute);
 app.use('/signup', signupRoute);
 app.use('/api', api);
+app.use('/:others', (req, res) => {
+    res.status(404).send('404 Not Found');
+})
 
 app.listen(process.env.PORT||8000, ()=>{console.log('Server listening at port', process.env.PORT)})
