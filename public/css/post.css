@@ -58,6 +58,10 @@ article .content img {
     width: 100%;
 }
 
+article p{
+    color: #d7d7d7;
+}
+
 article .actions {
     display: flex;
     margin-top: 10px;

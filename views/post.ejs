@@ -4,17 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post | Juno</title>
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap" rel="stylesheet">
+
+    <!-- Google Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Local CSS -->
-     <link rel="stylesheet" href="/post.css" />
-     <link rel="stylesheet" href="/nav.css" />
-     <link rel="stylesheet" href="/footer.css" />
+     <link rel="stylesheet" href="/css/postDetails.css" />
+     <link rel="stylesheet" href="/css/nav.css" />
+     <link rel="stylesheet" href="/css/footer.css" />
+     <link rel="stylesheet" href="/css/post.css" />
+
+     <!-- Local JS -->
+    <script src="/functions.js"></script>
 </head>
 <body>
     <%- include('./components/nav') %>
     <main>
-        <h1>Post</h1>
+        <div class="top">
+            <button onclick="history.back()"><span class="material-symbols-outlined">arrow_back</span></button>
+            <span>Post</span>
+        </div>
+        <article data-postid=<%= post.postid %>>
+            <div class="top">
+                <div class="left">
+                    <img alt="image" src="https://picsum.photos/30?random=<%= Math.floor(Math.random()*100)%>"/>
+                </div>
+                <div class="right">
+                    <h3><a href="/p/<%= post.username %>"><%= post.fullname %></a> <span>@<%= post.username %></span></h3>
+                    <span><%= new Date(post.date).toDateString() %></span>
+                </div>
+            </div>
+                <div class="content">
+                    <p><%= post.content %></p>
+                    <% if(post.image && post.image!='NULL'){ %>
+                        <img alt="image" src=<%= post.image %> />
+                    <% } else { %>
+                        <img alt="image" src="https://picsum.photos/500/350?random=<%= Math.floor(Math.random()*10) %>"/>
+                    <% } %>
+                </div>
+            <div class="actions">
+                <div class="left">
+                    <button class="<%= post.liked ? 'liked' : '' %>" onclick="likepost(event)">
+                        <span class="material-symbols-outlined">favorite</span>
+                        <span><%= post.likes %></span>
+                    </button>
+                    <button>
+                        <span class="material-symbols-outlined">comment</span>
+                        <span><%= post.comments %></span>
+                    </button>
+                </div>
+                <div class="right">
+                    <button><span class="material-symbols-outlined">bookmark</span></button>
+                    <button><span class="material-symbols-outlined">reply</span></button>
+                </div>
+            </div>
+        </article>
+        <hr/>
+
+        
+        <section class="comment_section">
+            <div class="form">
+                <form onsubmit="commentThroughPostDetails(event, `<%= post.postid%>`)">
+                    <img alt="image" src="https://picsum.photos/40?random=<%= Math.floor(Math.random()*100)%>"/>
+                    <textarea id="commetn_text_area" maxlength="500" placeholder="Add a comment"></textarea>
+                    <button>Reply</button>
+                </form>
+            </div>
+            <div class="comments">
+            <% comments.forEach(comment => { %>
+                <div class="comment">
+                    <div class="right">
+                        <h3><a href="/p/<%= comment.username %>"><%= comment.fullname %></a> <span>@<%= comment.username %></span></h3>
+                        <p><%= comment.content %></p>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </section>
+
     </main>
-    <%- include('./components/nav') %>
+    <%- include('./components/footer') %>
 </body>
 </html>

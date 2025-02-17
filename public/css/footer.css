@@ -41,7 +41,12 @@ footer .main .search form input {
     font-size: 16px;
 }
 
+footer .main .profiles h2{
+    margin-bottom: 20px;
+}
+
 footer .main .profiles ul {
+    width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -50,7 +55,8 @@ footer .main .profiles ul {
 }
 
 footer .main .profiles ul li {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 120px;
     width: 280px;
     align-items: center;
     justify-content: space-between;
@@ -77,6 +83,7 @@ footer .main .profiles ul li .name {
 }
 
 footer .main .profiles ul li button {
+    width: 100%;
     background: rgba(219, 219, 219);
     color: #1e1e1e;
     border-radius: 30px;

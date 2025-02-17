@@ -8,14 +8,16 @@
             <span><%= new Date(element.date).toDateString() %></span>
         </div>
     </div>
-    <div class="content">
-        <p><%= element.content %></p>
-        <% if(element.image && element.image!='NULL'){ %>
-            <img alt="image" src=<%= element.image %> />
-        <% } else { %>
-            <img alt="image" src="https://picsum.photos/500/350?random=<%= Math.floor(Math.random()*10) %>"/>
-        <% } %>
-    </div>
+    <a href="/p/<%= element.username %>/post/<%= element.postid %>">
+        <div class="content">
+            <p><%= element.content %></p>
+            <% if(element.image && element.image!='NULL'){ %>
+                <img alt="image" src=<%= element.image %> />
+            <% } else { %>
+                <img alt="image" src="https://picsum.photos/500/350?random=<%= Math.floor(Math.random()*10) %>"/>
+            <% } %>
+        </div>
+    </a>
     <div class="actions">
         <div class="left">
             <button class="<%= element.liked ? 'liked' : '' %>" onclick="likepost(event)">

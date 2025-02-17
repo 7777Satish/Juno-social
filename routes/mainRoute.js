@@ -8,7 +8,7 @@ const mainRoute = express.Router();
 mainRoute.get('/', authMiddleware, async (req, res) => {
     const [posts] = await postModel.getPosts(req.user.username, 0);
     const [user] = await userModel.getByUsername(req.user.username);
-    const topProfiles = await userModel.gettopprofiles(req.user.username); // now properly awaited
+    const topProfiles = await userModel.gettopprofiles(req.user.username);
     res.render('index', { user: user[0], posts: posts, topProfiles: topProfiles });
 });
 

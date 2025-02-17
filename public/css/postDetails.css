@@ -34,10 +34,6 @@ a {
     text-decoration: none;
 }
 
-hr{
-    border: 1px solid rgba(100, 100, 100, 0.5);
-}
-
 .comment_form{
     width: 100vw;
     height: 100vh;
@@ -112,7 +108,7 @@ hr{
     color: #fff;
 }
 
-main{
+main {
     grid-column-start: 2;
     grid-column-end: 3;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -122,111 +118,94 @@ main{
     border-right: 1px solid rgba(100, 100, 100, 0.5);
 }
 
-main .banner{
-    width: 100%;
-    padding: 5px 0;
+main>.top{
     display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
     border-bottom: 1px solid rgba(100, 100, 100, 0.5);
 }
 
-main .banner a{
-    color: inherit;
-}
-
-main .banner .profile{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-left: 10px;
-}
-
-main .banner .profile .name{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    color: #dedede;
-    font-size: small;
-}
-
-main .banner .profile .name code{
-    font-size: small;
-    color: #b1b1b1;
-    font-family: 'Montserrat', sans-serif;
-}
-
-main .image{
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 100px;
-}
-
-main .image .banner_image{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    height: 270px;
-}
-
-main .image .banner_image img{
-    width: 100%;
-}
-
-main .image .text{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    transform: translateY(50%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px 30px;
-}
-
-main .image .text img{
-    border-radius: 50%;
-    border: 4px solid #151515;
-}
-
-main .image .text .info{
-    display: flex;
-    flex-direction: column;
-    color: #d5d5d5;
-    display: flex;
-    align-items: center;
-}
-
-main .image .text .buttons{
-    padding-top: 60px;
-}
-
-
-main .image .text .buttons button {
-    background: rgba(219, 219, 219);
-    color: #1e1e1e;
-    border-radius: 30px;
+main>.top button{
+    background: transparent;
     border: none;
     outline: none;
-    padding: 5px 30px;
-    font-size: medium;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d5d5d5 !important;
     cursor: pointer;
 }
 
-main .image .text.buttons button:hover {
-    background: rgb(248, 248, 248);
+hr{
+    border: none;
+    border-top: 1px solid rgba(100, 100, 100, 0.5);
 }
 
-section{
-    padding: 20px 30px;
+main .comment_section{
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.posts{
-    padding-left: 0;
+main .comment_section .form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+    padding: 0 50px 50px 50px;
+}
+
+main .comment_section .form form{
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 30px 1fr 80px;
+    align-content: center;
+    align-items: center;
+}
+
+main .comment_section .form form img{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+main .comment_section .form form textarea{
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #d5d5d5;
+    font-family: 'Poppins', sans-serif;
+    font-size: large;
+    height: 25px;
+}
+
+main .comment_section .form form button{
+    padding: 5px 10px;
+    background: #d5d5d5;
+    color: #212121;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+main .comment_section .comments{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+main .comment_section .comments .comment{
+    padding: 0 30px 30px 30px;
+    width: 100%;
+    padding: 20px 50px;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.5);
 }

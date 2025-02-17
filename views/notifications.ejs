@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | Juno</title>
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="css/notifications.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/post.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap" rel="stylesheet">
+
+    <!-- Google Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Local JS -->
+    <script src="js/notifications.js"></script>
+    <script src="js/functions.js"></script>
+</head>
+<body>
+    <%- include('./components/nav') %>
+    <main>
+        <div class="top">
+            <h1>Notifications</h1>
+            <span class="material-symbols-outlined">settings</span>
+        </div>
+        <div class="notifications">
+            <% notifications.forEach(notification => { %>
+                <div class="notification">
+                    <div class="image">
+                        <span class="material-symbols-outlined">notifications</span>
+                    </div>
+                    <div class="text">
+                        <a href="<%= notification.link %>"><%= notification.content %></a>
+                        <span><%= new Date(notification.created_at).toDateString() %></span>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+    <%- include('./components/footer') %>
+</body>
+</html>

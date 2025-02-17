@@ -22,8 +22,26 @@ function handleCommentForm(e){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({postid, content:e.srcElement[0].value})
+    }).then(d=>{
+        d.text().then(redirect=>{
+            window.location.href = redirect
+        })
+        e.srcElement[0].value = '';
     });
-    e.srcElement[0].value = '';
+}
+
+function commentThroughPostDetails(e, postId){
+    e.preventDefault();
+    postId = parseInt(postId);
+    fetch('/api/comment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({postid: postId, content:e.srcElement[0].value})
+    }).then(d=>{
+        location.reload();
+    });
 }
 
 function followUser(e) {

@@ -10,6 +10,27 @@ const Post = {
         }
         catch(err){console.log(err)}
     },
+    getPostById: (username, postId)=>{
+        // Query to get a single post by its id
+        const query = `
+    SELECT posts.*, 
+           users.fullname,
+           EXISTS (
+               SELECT 1 
+               FROM likes 
+               WHERE likes.postid = posts.postid 
+               AND likes.username = ?
+           ) AS liked
+    FROM posts
+    JOIN users on posts.username = users.username
+    WHERE posts.postid = ?
+`
+        try{
+            return db.query(query, [username, postId]);
+        } catch(err){
+            console.log(err);
+        }
+    },
     getPostsByUsername: (username, target_username, i)=>{
         const query = `
     SELECT posts.*, 
@@ -24,10 +45,18 @@ const Post = {
     JOIN users ON posts.username = users.username
     WHERE posts.username = ?
     ORDER BY date DESC
-    LIMIT 6 OFFSET 0;
+    LIMIT ? OFFSET ?;
 `;
         try{
             return db.query(query, [username, target_username, 6, i*6]);
+        } catch(err){
+            console.log(err);
+        }
+    },
+    getPostOwner: (postId)=>{
+        const query = `select username from posts where postid = ?`;
+        try{
+            return db.query(query, [postId]);
         } catch(err){
             console.log(err);
         }
@@ -79,6 +108,13 @@ const Post = {
             let [fullname] = await db.query('select fullname from users where username=?',[username]);
             await db.query('insert into comments (fullname, username, postid, content) values (?, ?, ?, ?)', [fullname[0].fullname, username, postId, content]);
             await db.query('update posts set comments=comments+1 where postid=?', [postId]);
+        } catch(err){
+            console.log(err);
+        }
+    },
+    getComments: async (postId)=>{
+        try{
+            return await db.query('select * from comments where postid=? order by commentid DESC, created_at DESC', [postId]);
         } catch(err){
             console.log(err);
         }

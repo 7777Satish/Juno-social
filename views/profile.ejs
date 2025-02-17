@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile | Juno</title>
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+
     <!-- Local CSS -->
-    <link rel="stylesheet" href="/profile.css" />
-    <link rel="stylesheet" href="/nav.css" />
-    <link rel="stylesheet" href="/footer.css" />
-    <link rel="stylesheet" href="/post.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/post.css" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +26,8 @@
 
 
     <!-- Local JavaScript -->
-    <script src="/profile.js"></script>
-    <script src="/functions.js"></script>
+    <script src="/js/profile.js"></script>
+    <script src="/js/functions.js"></script>
 </head>
 
 <body>
@@ -48,7 +50,7 @@
         <main>
             <div class="banner">
                 <div class="profile">
-                    <a href="/"><span class="material-symbols-outlined">arrow_back</span></a>
+                    <button onclick="history.back()"><span class="material-symbols-outlined">arrow_back</span></button>
                     <div class="name">
                         <h2><%= profile.fullname %></h2>
                         <code>Posts: <%= profile.posts %></code>
@@ -77,14 +79,17 @@
             </div>
 
             <section class="description">
-                <p><%= profile.description?user.description:"Motivated and adaptable with strong problem-solving skills. A team player committed to continuous learning and personal growth in dynamic environments." %></p>
+                <p><%= profile.description?profile.description:"Motivated and adaptable with strong problem-solving skills. A team player committed to continuous learning and personal growth in dynamic environments." %></p>
             </section>
             <hr/>
-            <section class="posts">
+            <section class="posts" id="allPosts">
                 <% posts.forEach(element => { %>
                     <%- include('./components/post', {element:element}) %>
                     <br/>
                 <% }) %>
+            </section>
+            <section class="moreposts" id="thereadend">
+                Loading more posts...
             </section>
         </main>
 
