@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </button>
         </div>
         <div class="right">
-            <button><span class="material-symbols-outlined">bookmark</span></button>
+            <button class="${element.bookmarked ? 'bookmarked' : ''}" onclick="bookmarkpost(event)"><span class="material-symbols-outlined">bookmark</span></button>
             <button><span class="material-symbols-outlined">reply</span></button>
         </div>
     </div>

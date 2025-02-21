@@ -3,6 +3,7 @@ import authMiddleware from '../../middlewares/authMiddleware.js';
 import postModel from '../../models/postModel.js';
 import userModel from '../../models/userModel.js';
 import notificationModel from '../../models/notificationModel.js';
+import bookmarkModel from '../../models/bookmarkModel.js';
 const api = express.Router();
 
 api.get('/posts', authMiddleware, async (req, res) => {
@@ -91,6 +92,14 @@ api.post('/follow', authMiddleware, async (req, res)=>{
     await notificationModel.create(notificationData);
 
     res.send(result);
+});
+
+api.post('/bookmarkpost', authMiddleware, async (req, res)=>{
+    const {postid} = req.body;
+    const [postBy] = await postModel.getPostOwner(postid);
+    const username = req.user.username;
+    const [bookmarks] = await bookmarkModel.create(username, parseInt(postid), postBy[0].username);
+    res.json(bookmarks);
 });
 
 export default api;

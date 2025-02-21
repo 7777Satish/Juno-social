@@ -13,6 +13,7 @@ article .top {
     justify-items: start;
     grid-template-columns: 40px 1fr;
     gap: 10px;
+    border-bottom: none;
 }
 
 article .top .left {
@@ -97,6 +98,15 @@ article .actions .left .liked:first-child{
     'GRAD' 0,
     'opsz' 24;
     color: rgb(221, 65, 143) !important;
+}
+
+.bookmarked{
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color: rgb(158, 179, 255) !important;
 }
 
 article .actions button {

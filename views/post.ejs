@@ -21,7 +21,7 @@
      <link rel="stylesheet" href="/css/post.css" />
 
      <!-- Local JS -->
-    <script src="/functions.js"></script>
+    <script src="/js/functions.js"></script>
 </head>
 <body>
     <%- include('./components/nav') %>
@@ -60,7 +60,7 @@
                     </button>
                 </div>
                 <div class="right">
-                    <button><span class="material-symbols-outlined">bookmark</span></button>
+                    <button class="<%= post.bookmarked ? 'bookmarked' : '' %>" onclick="bookmarkpost(event)"><span class="material-symbols-outlined">bookmark</span></button>
                     <button><span class="material-symbols-outlined">reply</span></button>
                 </div>
             </div>

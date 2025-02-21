@@ -20,13 +20,19 @@ const Post = {
                FROM likes 
                WHERE likes.postid = posts.postid 
                AND likes.username = ?
-           ) AS liked
+           ) AS liked,
+            EXISTS (
+                SELECT 1 
+                FROM bookmarks 
+                WHERE bookmarks.post_id = posts.postid 
+                    AND bookmarks.username = ?
+            ) AS bookmarked
     FROM posts
     JOIN users on posts.username = users.username
     WHERE posts.postid = ?
 `
         try{
-            return db.query(query, [username, postId]);
+            return db.query(query, [username, username, postId]);
         } catch(err){
             console.log(err);
         }
@@ -69,13 +75,19 @@ const Post = {
                             FROM likes 
                             WHERE likes.postid = posts.postid 
                                 AND likes.username = ?
-                        ) AS liked
+                        ) AS liked,
+                        EXISTS (
+                            SELECT 1 
+                            FROM bookmarks 
+                            WHERE bookmarks.post_id = posts.postid 
+                                AND bookmarks.username = ?
+                        ) AS bookmarked
                     FROM posts
                     JOIN users ON posts.username = users.username
                     ORDER BY date DESC
                     LIMIT ? OFFSET ?;`
         try{
-            return db.query(query, [username, 6, i*6]);
+            return db.query(query, [username, username, 6, i*6]);
         } catch(err){
             console.log(err);
         }

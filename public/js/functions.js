@@ -13,6 +13,21 @@ function likepost(e){
     });
 }
 
+function bookmarkpost(e){
+    const postid = e.target.closest("article").getAttribute("data-postid");
+    console.log("lets go")
+    fetch('/api/bookmarkpost', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({postid})
+    }).then(res=>{
+        const button = e.target.closest("button");
+        button.classList.toggle('bookmarked');
+    });
+}
+
 function handleCommentForm(e){
     e.preventDefault();
     const postid = currentCommentElement; 
